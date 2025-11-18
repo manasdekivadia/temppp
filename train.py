@@ -9,9 +9,9 @@ np.random.seed(RANDOM_SEED)
 tf.random.set_seed(RANDOM_SEED)
 
 # Paths
-dataset_path = r"Sign-Language-Recognition\slr\model\keypoint.csv"
-model_h5_path = r"Sign-Language-Recognition\slr\model\slr_model.hdf5"
-model_tflite_path = r"Sign-Language-Recognition\slr\model\slr_model.tflite"
+dataset_path = r"C:\Users\Manas\OneDrive\Desktop\AI ML\Sign Language\sign-language-cnn\temp-dl\temppp\slr\model\keypoint.csv"
+model_h5_path = r"C:\Users\Manas\OneDrive\Desktop\AI ML\Sign Language\sign-language-cnn\temp-dl\temppp\slr\model\slr_model.hdf5"
+model_tflite_path = r"C:\Users\Manas\OneDrive\Desktop\AI ML\Sign Language\sign-language-cnn\temp-dl\temppp\slr\model\slr_model.tflite"
 
 # Number of classes 
 NUM_CLASSES = 24
@@ -23,7 +23,7 @@ y = np.loadtxt(dataset_path, delimiter=',', dtype='int32', usecols=(0,))
 
 # Split into training and test sets
 print("Splitting dataset...")
-X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8, random_state=RANDOM_SEED)
+X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.75, random_state=RANDOM_SEED)
 
 # Define the model
 print("Building model...")
@@ -43,7 +43,7 @@ model.compile(optimizer='adam',
 
 # Train the model
 print("Training model...")
-model.fit(X_train, y_train, epochs=500, validation_data=(X_test, y_test))
+model.fit(X_train, y_train, epochs=50, validation_data=(X_test, y_test))
 
 # Save the model in HDF5 format
 print(f"Saving model to {model_h5_path}...")
